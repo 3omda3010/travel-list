@@ -33,7 +33,7 @@ h1 {
   text-transform: uppercase;
   font-weight: 400;
   word-spacing: 30px;
-  letter-spacing: -13px;
+  letter-spacing: -5px;
   padding: 2.4rem 0;
 }
 
@@ -63,7 +63,6 @@ input {
   font-weight: 700;
   font-size: 1.8rem;
   cursor: pointer;
-  height: 50px;
 }
 
 .add-form button {
@@ -75,7 +74,6 @@ input {
   background-color: #5a3e2b;
   color: #ffebb3;
   padding: 4rem 0;
-  
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -117,7 +115,6 @@ input[type="checkbox"] {
 }
 
 .list li button {
-  color: #ffebb3;
   cursor: pointer;
   background: none;
   border: none;
@@ -132,4 +129,3 @@ input[type="checkbox"] {
   font-weight: 700;
   padding: 3.2rem 0;
 }
- 

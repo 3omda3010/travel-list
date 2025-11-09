@@ -1,17 +1,15 @@
-function Item({ items, handleDeleteItem, handleCheckedItem }) {
-    return (
-      <li>
-        <input
-          type="checkbox"
-          value={items.packed}
-          onChange={() => handleCheckedItem(items.id)}
-        />
-        <span style={items.packed ? { textDecoration: "line-through" } : {}}>
-          {items.quantity}-{items.description}
-        </span>
-        <button onClick={() => handleDeleteItem(items.id)}>❌</button>
-      </li>
-    );
-  }
-
-  export default Item;
+export default function Item({ item, onDeleteItem, onToggleItem }) {
+  return (
+    <li>
+      <input
+        type="checkbox"
+        value={item.packed}
+        onChange={() => onToggleItem(item.id)}
+      />
+      <span style={item.packed ? { textDecoration: "line-through" } : {}}>
+        {item.quantity} {item.description}
+      </span>
+      <button onClick={() => onDeleteItem(item.id)}>❌</button>
+    </li>
+  );
+}

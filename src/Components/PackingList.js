@@ -1,13 +1,14 @@
 import { useState } from "react";
 import Item from "./Item";
 
-function PackingList({
+export default function PackingList({
   items,
-  handleDeleteItem,
-  handleCheckedItem,
-  handleClearList,
+  onDeleteItem,
+  onToggleItem,
+  onClearList,
 }) {
-  const [sortBy, setSortBy] = useState("packed");
+  const [sortBy, setSortBy] = useState("input");
+
   let sortedItems;
 
   if (sortBy === "input") sortedItems = items;
@@ -23,33 +24,26 @@ function PackingList({
       .sort((a, b) => Number(a.packed) - Number(b.packed));
 
   return (
-    <div className="list" style={{ height: "60vh" }}>
+    <div className="list">
       <ul>
         {sortedItems.map((item) => (
           <Item
-            items={item}
+            item={item}
+            onDeleteItem={onDeleteItem}
+            onToggleItem={onToggleItem}
             key={item.id}
-            handleDeleteItem={handleDeleteItem}
-            handleCheckedItem={handleCheckedItem}
           />
         ))}
       </ul>
 
       <div className="actions">
-        <select
-          value={sortBy}
-          onChange={(e) => {
-            setSortBy(e.target.value);
-          }}
-        >
-          <option value="input">Sort by input</option>
-          <option value="description">Sort by alpha</option>
-          <option value="packed">Sort by checked</option>
+        <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+          <option value="input">Sort by input order</option>
+          <option value="description">Sort by description</option>
+          <option value="packed">Sort by packed status</option>
         </select>
-        <button onClick={handleClearList}>Clear list</button>
+        <button onClick={onClearList}>Clear list</button>
       </div>
     </div>
   );
 }
-
-export default PackingList;
